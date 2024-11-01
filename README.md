@@ -4,7 +4,7 @@ A mini-project for Grinnell's CSC-207.
 
 Authors:
 
-* Moise Milenge
+* Your Name Here
 * Your Name Here
 * Samuel A. Rebelsky (Starter code)
 
