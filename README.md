@@ -7,7 +7,6 @@ Authors:
 * Your Name Here
 * Your Name Here
 * Samuel A. Rebelsky (Starter code)
-
 Instructions:
 
 * **Please add instructions for running the game**
