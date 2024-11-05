@@ -18,9 +18,12 @@ public class UserInterface {
         Matrix<String> board = GameLogic.setupTikBoard(width, height);
         Matrix.print(pen, board, true);
         
-        for (int i = 0; i < 3; i++) {
-            GameLogic.playTurn(board, row, column, 1, eyes, pen, height);
-            GameLogic.playTurn(board, row, column, 2, eyes, pen, height);
+        for (int i = 0; i < 2; i++) {
+            GameLogic.playTurn(board, row, column, 1, eyes, pen, height, "first");
+            GameLogic.playTurn(board, row, column, 1, eyes, pen, height, "second");
+            Matrix.print(pen, board, true);
+            GameLogic.playTurn(board, row, column, 2, eyes, pen, height, "first");
+            GameLogic.playTurn(board, row, column, 2, eyes, pen, height, "second");
             Matrix.print(pen, board, true);
         }
     }

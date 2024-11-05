@@ -42,11 +42,11 @@ public class GameLogic {
 
   // Better practice to impliment this function and use it to reduce complexity 
   
-  static void playTurn(Matrix<String> board, int row, int column, int player, BufferedReader eyes, PrintWriter pen, int limit) throws IOException {
+  static void playTurn(Matrix<String> board, int row, int column, int player, BufferedReader eyes, PrintWriter pen, int limit, String round) throws IOException {
       do {
-        row = IOUtils.readInt(pen, eyes, "Player " + player + " first row ", 0, limit);
+        row = IOUtils.readInt(pen, eyes, "Player " + player + " " + round + " row ", 0, limit);
         System.out.println(row);
-        column = IOUtils.readInt(pen, eyes, "Player " + player + " first column ", 0, limit);
+        column = IOUtils.readInt(pen, eyes, "Player " + player + " " + round + " column ", 0, limit);
         System.out.println(column);
       } while (GameLogic.filledSpace(board, row, column)); 
       if (player == 1 ) {
