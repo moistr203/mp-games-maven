@@ -10,8 +10,8 @@ public class UserInterface {
     public static void main(String[] args) throws IOException {
         int width = 8;
         int height = 8;
-        int row;
-        int column;
+        int row = -1;
+        int column = -1;
         PrintWriter pen = new PrintWriter(System.out, true);
         BufferedReader eyes = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("This is a board");
@@ -19,13 +19,8 @@ public class UserInterface {
         Matrix.print(pen, board, true);
         
         for (int i = 0; i < 3; i++) {
-            do {
-                row = IOUtils.readInt(pen, eyes, "Player 1 first row ", 0, height);
-                System.out.println(row);
-                column = IOUtils.readInt(pen, eyes, "Player 1 first column ", 0, height);
-                System.out.println(column);
-              } while (GameLogic.filledSpace(board, row, column)); 
-            board.set(row, column, "X");
+            GameLogic.playTurn(board, row, column, 1, eyes, pen, height);
+            GameLogic.playTurn(board, row, column, 2, eyes, pen, height);
             Matrix.print(pen, board, true);
         }
     }
