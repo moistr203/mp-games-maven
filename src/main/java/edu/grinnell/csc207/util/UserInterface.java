@@ -17,14 +17,16 @@ public class UserInterface {
         System.out.println("This is a board");
         Matrix<String> board = GameLogic.setupTikBoard(width, height);
         Matrix.print(pen, board, true);
+
+        GameBoard gameBoard = new GameBoard(width, height);
         
         for (int i = 0; i < 2; i++) {
-            GameLogic.playTurn(board, row, column, 1, eyes, pen, height, "first");
-            GameLogic.playTurn(board, row, column, 1, eyes, pen, height, "second");
-            Matrix.print(pen, board, true);
-            GameLogic.playTurn(board, row, column, 2, eyes, pen, height, "first");
-            GameLogic.playTurn(board, row, column, 2, eyes, pen, height, "second");
-            Matrix.print(pen, board, true);
+            GameLogic.playTurn(gameBoard, row, column, 1, eyes, pen, height, "first");
+            GameLogic.playTurn(gameBoard, row, column, 1, eyes, pen, height, "second");
+            gameBoard.print(pen, true);
+            GameLogic.playTurn(gameBoard, row, column, 2, eyes, pen, height, "first");
+            GameLogic.playTurn(gameBoard, row, column, 2, eyes, pen, height, "second");
+            gameBoard.print(pen, true);
         }
     }
 }
