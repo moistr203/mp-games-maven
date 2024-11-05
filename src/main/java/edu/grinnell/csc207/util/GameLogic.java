@@ -31,4 +31,12 @@ public class GameLogic {
     Matrix<String> board = new MatrixV0<String>(width, height, " ");
     return board;
   } // setupBoard(int, int, int) 
+  static boolean filledSpace(Matrix<String> board, int row, int column) {
+    if (board.get(row, column).equals(" ")) {
+      return false;
+    }
+    System.out.println("That space is already filled");
+    return true;
+  }
+
 }
