@@ -15,9 +15,6 @@ public class UserInterface {
         PrintWriter pen = new PrintWriter(System.out, true);
         BufferedReader eyes = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("This is a board");
-        Matrix<String> board = GameLogic.setupTikBoard(width, height);
-        Matrix.print(pen, board, true);
-
         GameBoard gameBoard = new GameBoard(width, height);
         
         for (int i = 0; i < 2; i++) {

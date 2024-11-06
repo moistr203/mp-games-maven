@@ -24,9 +24,9 @@ public class GameBoard {
    * Methods
      */
     public boolean isFilledSpace(int row, int column) {
-      if (!this.board.get(row, column).equals(" ")) {
-        System.out.println("That space is taken");
-      }
+        if (!this.board.get(row, column).equals(" ")) {
+            System.out.println("That space is taken");
+        }
         return !this.board.get(row, column).equals(" ");
     }
 
@@ -34,8 +34,62 @@ public class GameBoard {
         this.board.set(row, column, piece);
     }
 
+    public String get(int row, int column) {
+        return this.board.get(row, column);
+    }
+
+    public int getHeight() {
+        return this.height;
+    }
+
+    public int getWidth() {
+        return this.width;
+    }
+
+    public int getScore(String piece) {
+        int score = 0;
+
+        // points by rows
+        for (int i = 0; i < this.height; i++) {
+            int inLine = 0;
+            for (int j = 0; j < this.width; j++) {
+                if (this.board.get(i, j).equals(piece)) {
+                    inLine++;
+                    if (inLine >= 4) {
+                        inLine = 0;
+                        score++;
+                    }
+                } else {
+                    inLine = 0;
+                }
+            } // for
+        } // for (points for rows)
+
+        // points by column
+        for (int j = 0; j < this.width; j++) {
+            int inLine = 0;
+            for (int i = 0; i < this.height; i++) {
+                if (this.board.get(i, j).equals(piece)) {
+                    inLine++;
+                    if (inLine >= 4) {
+                        inLine = 0;
+                        score++;
+                    }
+                } else {
+                    inLine = 0;
+                }
+            } // for
+        } // for (points for column)
+
+
+
+
+        
+        return score;
+    }
+
     public void print(PrintWriter pen, boolean bol) {
-      Matrix.print(pen, this.board, bol);
-  }
+        Matrix.print(pen, this.board, bol);
+    }
 
 }
