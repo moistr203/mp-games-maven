@@ -75,7 +75,7 @@ public interface Matrix<T> extends Cloneable {
 
   /**
    * Print a matrix, with or without labels.
-   * 
+   *
    * @param <T> The type of values stored in the matrix.
    * @param pen The PrintWriter to use for printing.
    * @param matrix The matrix to print.
@@ -263,6 +263,7 @@ public interface Matrix<T> extends Cloneable {
    *
    * @return a copy of the matrix.
    */
+  @SuppressWarnings("rawtypes")
   public Matrix clone();
 
   /**
@@ -273,5 +274,6 @@ public interface Matrix<T> extends Cloneable {
    * @return true if the other object is a matrix with the same width, height, and equal elements;
    *         false otherwise.
    */
+  @Override
   public boolean equals(Object other);
 } // interface Matrix<T>

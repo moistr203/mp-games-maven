@@ -352,6 +352,7 @@ public class MatrixV0<T> implements Matrix<T> {
      * @return true if the other object is a matrix with the same width, height, and equal elements;
      *         false otherwise.
      */
+    @Override
     public boolean equals(Object other) {
         return this == other; // STUB
     } // equals(Object)
