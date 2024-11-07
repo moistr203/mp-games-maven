@@ -5,14 +5,14 @@ import java.io.PrintWriter;
 public class GameBoard {
 
     /*
-   * Fields 
+     * Fields
      */
     Matrix<String> board;
     int height;
     int width;
 
     /*
-   * Constructor
+     * Constructor
      */
     public GameBoard(int width, int height) {
         this.width = width;
@@ -21,7 +21,7 @@ public class GameBoard {
     }
 
     /*
-   * Methods
+     * Methods
      */
     public boolean isFilledSpace(int row, int column) {
         if (!this.board.get(row, column).equals(" ")) {
@@ -63,7 +63,7 @@ public class GameBoard {
                 }
             } // for
         } // for (points for rows)
-        // points by column
+          // points by column
         for (int j = 0; j < this.width; j++) {
             int inLine = 0;
             for (int i = 0; i < this.height; i++) {
@@ -78,7 +78,7 @@ public class GameBoard {
                 }
             } // for
         } // for (points for column)
-        // points by diagonal top left corner
+          // points by diagonal top left corner
         for (int x = 0; x < this.width; x++) {
             int inLine = 0;
             for (int i = x, j = 0; i < this.height && j < this.width; i++, j++) {
@@ -93,7 +93,7 @@ public class GameBoard {
                 }
             } // for (points for rows)
         } // for (diagonal top left corner)
-        // points by diagonal top left corner
+          // points by diagonal top left corner
         for (int x = 1; x < this.width; x++) {
             int inLine = 0;
             for (int i = 0, j = x; i < this.height && j < this.width; i++, j++) {

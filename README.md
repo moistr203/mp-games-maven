@@ -9,7 +9,7 @@ Authors:
 * Samuel A. Rebelsky (Starter code)
 Instructions:
 
-* **Please add instructions for running the game**
+Player 1 places X and player 2 places O. Each player places two pieces per turn. The player with the most four-in-a-rows at the end wins.
 
 Acknowledgements:
 

@@ -22,15 +22,13 @@ public class MatrixV0<T> implements Matrix<T> {
     // | Constructors |
     // +--------------+
     /**
-     * Create a new matrix of the specified width and height with the given
-     * value as the default.
+     * Create a new matrix of the specified width and height with the given value as the default.
      *
      * @param width The width of the matrix.
      * @param height The height of the matrix.
      * @param def The default value, used to fill all the cells.
      *
-     * @throws NegativeArraySizeException If either the width or height are
-     * negative.
+     * @throws NegativeArraySizeException If either the width or height are negative.
      */
     @SuppressWarnings("unchecked")
     public MatrixV0(int width, int height, T def) {
@@ -50,14 +48,12 @@ public class MatrixV0<T> implements Matrix<T> {
     } // MatrixV0(int, int, T)
 
     /**
-     * Create a new matrix of the specified width and height with null as the
-     * default value.
+     * Create a new matrix of the specified width and height with null as the default value.
      *
      * @param width The width of the matrix.
      * @param height The height of the matrix.
      *
-     * @throws NegativeArraySizeException If either the width or height are
-     * negative.
+     * @throws NegativeArraySizeException If either the width or height are negative.
      */
     public MatrixV0(int width, int height) {
         this(width, height, null);
@@ -74,8 +70,7 @@ public class MatrixV0<T> implements Matrix<T> {
      *
      * @return the value at the specified location.
      *
-     * @throws IndexOutOfBoundsException If either the row or column is out of
-     * reasonable bounds.
+     * @throws IndexOutOfBoundsException If either the row or column is out of reasonable bounds.
      */
     public T get(int row, int col) {
         if (widthHolder <= col || heightHolder <= row) {
@@ -92,8 +87,7 @@ public class MatrixV0<T> implements Matrix<T> {
      * @param col The column of the element.
      * @param val The value to set.
      *
-     * @throws IndexOutOfBoundsException If either the row or column is out of
-     * reasonable bounds.
+     * @throws IndexOutOfBoundsException If either the row or column is out of reasonable bounds.
      */
     public void set(int row, int col, T val) {
         if (widthHolder <= col || heightHolder <= row) {
@@ -109,7 +103,7 @@ public class MatrixV0<T> implements Matrix<T> {
      * @return the number of rows.
      */
     public int height() {
-        return heightHolder;   // STUB
+        return heightHolder; // STUB
     } // height()
 
     /**
@@ -118,7 +112,7 @@ public class MatrixV0<T> implements Matrix<T> {
      * @return the number of columns.
      */
     public int width() {
-        return widthHolder;   // STUB
+        return widthHolder; // STUB
     } // width()
 
     /**
@@ -126,8 +120,7 @@ public class MatrixV0<T> implements Matrix<T> {
      *
      * @param row The number of the row to insert.
      *
-     * @throws IndexOutOfBoundsException If the row is negative or greater than
-     * the height.
+     * @throws IndexOutOfBoundsException If the row is negative or greater than the height.
      */
     public void insertRow(int row) {
         if (heightHolder < row || row < 0) {
@@ -154,10 +147,8 @@ public class MatrixV0<T> implements Matrix<T> {
      * @param row The number of the row to insert.
      * @param vals The values to insert.
      *
-     * @throws IndexOutOfBoundsException If the row is negative or greater than
-     * the height.
-     * @throws ArraySizeException If the size of vals is not the same as the
-     * width of the matrix.
+     * @throws IndexOutOfBoundsException If the row is negative or greater than the height.
+     * @throws ArraySizeException If the size of vals is not the same as the width of the matrix.
      */
     public void insertRow(int row, T[] vals) throws ArraySizeException {
         if (heightHolder < row || row < 0) {
@@ -184,8 +175,7 @@ public class MatrixV0<T> implements Matrix<T> {
      *
      * @param col The number of the column to insert.
      *
-     * @throws IndexOutOfBoundsException If the column is negative or greater
-     * than the width.
+     * @throws IndexOutOfBoundsException If the column is negative or greater than the width.
      */
     public void insertCol(int col) {
         if (widthHolder < col || col < 0) {
@@ -216,10 +206,8 @@ public class MatrixV0<T> implements Matrix<T> {
      * @param col The number of the column to insert.
      * @param vals The values to insert.
      *
-     * @throws IndexOutOfBoundsException If the column is negative or greater
-     * than the width.
-     * @throws ArraySizeException If the size of vals is not the same as the
-     * height of the matrix.
+     * @throws IndexOutOfBoundsException If the column is negative or greater than the width.
+     * @throws ArraySizeException If the size of vals is not the same as the height of the matrix.
      */
     public void insertCol(int col, T[] vals) throws ArraySizeException {
         if (widthHolder < col || col < 0) {
@@ -252,8 +240,8 @@ public class MatrixV0<T> implements Matrix<T> {
      *
      * @param row The number of the row to delete.
      *
-     * @throws IndexOutOfBoundsException If the row is negative or greater than
-     * or equal to the height.
+     * @throws IndexOutOfBoundsException If the row is negative or greater than or equal to the
+     *         height.
      */
     public void deleteRow(int row) {
         if (heightHolder <= row || row < 0) {
@@ -276,8 +264,8 @@ public class MatrixV0<T> implements Matrix<T> {
      *
      * @param col The number of the column to delete.
      *
-     * @throws IndexOutOfBoundsException If the column is negative or greater
-     * than or equal to the width.
+     * @throws IndexOutOfBoundsException If the column is negative or greater than or equal to the
+     *         width.
      */
     public void deleteCol(int col) {
         if (widthHolder <= col || col < 0) {
@@ -308,26 +296,24 @@ public class MatrixV0<T> implements Matrix<T> {
      * @param endCol The right edge / column to stop with (exclusive).
      * @param val The value to store.
      *
-     * @throw IndexOutOfBoundsException If the rows or columns are
-     * inappropriate.
+     * @throw IndexOutOfBoundsException If the rows or columns are inappropriate.
      */
-    public void fillRegion(int startRow, int startCol, int endRow, int endCol,
-            T val) { 
-                if (startRow < 0 || startRow >= heightHolder || startRow >= endRow) {
-                    throw new IndexOutOfBoundsException("Out of bounds start row given");
-                } else if (endRow < 0 || endRow > heightHolder) {
-                    throw new IndexOutOfBoundsException("Out of bounds end row given");
-                } else if (startCol < 0 || startCol >= widthHolder || startCol >= endCol) {
-                    throw new IndexOutOfBoundsException("Out of bounds start col given");
-                } else if (endCol < 0 || endCol > widthHolder) {
-                    throw new IndexOutOfBoundsException("Out of bounds end col given");
-                } else {
-                    for (int i = startRow; i < endRow; i++) {
-                        for (int j = startCol; j < endCol; j++) {
-                            matrix[i][j] = val;
-                        }
-                    }
+    public void fillRegion(int startRow, int startCol, int endRow, int endCol, T val) {
+        if (startRow < 0 || startRow >= heightHolder || startRow >= endRow) {
+            throw new IndexOutOfBoundsException("Out of bounds start row given");
+        } else if (endRow < 0 || endRow > heightHolder) {
+            throw new IndexOutOfBoundsException("Out of bounds end row given");
+        } else if (startCol < 0 || startCol >= widthHolder || startCol >= endCol) {
+            throw new IndexOutOfBoundsException("Out of bounds start col given");
+        } else if (endCol < 0 || endCol > widthHolder) {
+            throw new IndexOutOfBoundsException("Out of bounds end col given");
+        } else {
+            for (int i = startRow; i < endRow; i++) {
+                for (int j = startCol; j < endCol; j++) {
+                    matrix[i][j] = val;
                 }
+            }
+        }
     } // fillRegion(int, int, int, int, T)
 
     /**
@@ -341,23 +327,21 @@ public class MatrixV0<T> implements Matrix<T> {
      * @param endCol The column to stop with (exclusive).
      * @param val The value to store.
      *
-     * @throw IndexOutOfBoundsException If the rows or columns are
-     * inappropriate.
+     * @throw IndexOutOfBoundsException If the rows or columns are inappropriate.
      */
-    public void fillLine(int startRow, int startCol, int deltaRow, int deltaCol,
-            int endRow, int endCol, T val) {
+    public void fillLine(int startRow, int startCol, int deltaRow, int deltaCol, int endRow,
+            int endCol, T val) {
         // STUB
     } // fillLine(int, int, int, int, int, int, T)
 
     /**
-     * A make a copy of the matrix. May share references (e.g., if individual
-     * elements are mutable, mutating them in one matrix may affect the other
-     * matrix) or may not.
+     * A make a copy of the matrix. May share references (e.g., if individual elements are mutable,
+     * mutating them in one matrix may affect the other matrix) or may not.
      *
      * @return a copy of the matrix.
      */
     public Matrix clone() {
-        return this;        // STUB
+        return this; // STUB
     } // clone()
 
     /**
@@ -365,33 +349,25 @@ public class MatrixV0<T> implements Matrix<T> {
      *
      * @param other The object to compare.
      *
-     * @return true if the other object is a matrix with the same width, height,
-     * and equal elements; false otherwise.
+     * @return true if the other object is a matrix with the same width, height, and equal elements;
+     *         false otherwise.
      */
     public boolean equals(Object other) {
-        return this == other;       // STUB
+        return this == other; // STUB
     } // equals(Object)
 
     /**
-     * Compute a hash code for this matrix. Included because any object that
-     * implements `equals` is expected to implement `hashCode` and ensure that
-     * the hash codes for two equal objects are the same.
+     * Compute a hash code for this matrix. Included because any object that implements `equals` is
+     * expected to implement `hashCode` and ensure that the hash codes for two equal objects are the
+     * same.
      *
      * @return the hash code.
      *
-    public int hashCode() {
-        int multiplier = 7;
-        int code = widthHolder() + multiplier * heightHolder();
-        for (int row = 0; row < heightHolder(); row++) {
-            for (int col = 0; col < widthHolder(); col++) {
-                T val = this.get(row, col);
-                if (val != null) {
-                    // It's okay if the following computation overflows, since
-                    // it will overflow uniformly.
-                    code = code * multiplier + val.hashCode();
-                } // if
-            } // for col
-        } // for row
-        return code;
-    } // hashCode()*/
+     *         public int hashCode() { int multiplier = 7; int code = widthHolder() + multiplier *
+     *         heightHolder(); for (int row = 0; row < heightHolder(); row++) { for (int col = 0;
+     *         col < widthHolder(); col++) { T val = this.get(row, col); if (val != null) { // It's
+     *         okay if the following computation overflows, since // it will overflow uniformly.
+     *         code = code * multiplier + val.hashCode(); } // if } // for col } // for row return
+     *         code; } // hashCode()
+     */
 } // class MatrixV0

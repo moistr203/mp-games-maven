@@ -6,11 +6,13 @@ import java.io.PrintWriter;
 
 public class GameLogic {
 
-    static void playTurn(GameBoard gameBoard, int row, int column, int player, BufferedReader eyes, PrintWriter pen, int limit, String round) throws IOException {
+    static void playTurn(GameBoard gameBoard, int row, int column, int player, BufferedReader eyes,
+            PrintWriter pen, int limit, String round) throws IOException {
         do {
             row = IOUtils.readInt(pen, eyes, "Player " + player + " " + round + " row ", 0, limit);
             System.out.println(row);
-            column = IOUtils.readInt(pen, eyes, "Player " + player + " " + round + " column ", 0, limit);
+            column = IOUtils.readInt(pen, eyes, "Player " + player + " " + round + " column ", 0,
+                    limit);
             System.out.println(column);
         } while (gameBoard.isFilledSpace(row, column));
         if (player == 1) {

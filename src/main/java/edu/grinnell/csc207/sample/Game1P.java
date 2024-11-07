@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * A sample one-player game (is that a puzzle?). Intended as a potential
- * use of our Matrix interface.
+ * A sample one-player game (is that a puzzle?). Intended as a potential use of our Matrix
+ * interface.
  *
  * @author Samuel A. Rebelsky
  */
@@ -42,53 +42,50 @@ public class Game1P {
   /**
    * Print the insturctions.
    *
-   * @param pen
-   *  The printwriter used to print the instructions.
+   * @param pen The printwriter used to print the instructions.
    */
   public static void printInstructions(PrintWriter pen) {
     pen.println("""
-                Welcome to the sample one-player game.
+        Welcome to the sample one-player game.
 
-                Command-line arguments:
+        Command-line arguments:
 
-                * -w width - set up the width of the board
-                * -h height - set up the height of the board
-                * -s game-number - choose the game setup number (useful if
-                  you want to play the same setup multiple times).
+        * -w width - set up the width of the board
+        * -h height - set up the height of the board
+        * -s game-number - choose the game setup number (useful if
+          you want to play the same setup multiple times).
 
-                Your game board is a grid of X's, O's, *'s, and blanks.
+        Your game board is a grid of X's, O's, *'s, and blanks.
 
-                Your goal is to eliminate as many X's as possible while
-                keeping as many O's as possible.
+        Your goal is to eliminate as many X's as possible while
+        keeping as many O's as possible.
 
-                You have four basic moves. You can do each move up to
-                three times. You can also SKIP a step and just let the
-                *'s destroy things.
+        You have four basic moves. You can do each move up to
+        three times. You can also SKIP a step and just let the
+        *'s destroy things.
 
-                * RR: remove a row
-                * RC: remove a column
-                * IR: insert a blank row
-                * IC: insert a blank column
-                * SKIP: Do nothing, just let the *'s move.
+        * RR: remove a row
+        * RC: remove a column
+        * IR: insert a blank row
+        * IC: insert a blank column
+        * SKIP: Do nothing, just let the *'s move.
 
-                After each move, any *'s eliminate one neighboring piece
-                and move over that piece, using the following priority grid.
+        After each move, any *'s eliminate one neighboring piece
+        and move over that piece, using the following priority grid.
 
-                    1|6|7
-                    -+-+-
-                    5|*|4
-                    -+-+-
-                    8|3|2
-                """);
+            1|6|7
+            -+-+-
+            5|*|4
+            -+-+-
+            8|3|2
+        """);
   } // printInstructions(PrintWriter)
 
   /**
    * Print the results of the game.
    *
-   * @param pen
-   *   What to use for printing.
-   * @param board
-   *   The game board at the end.
+   * @param pen What to use for printing.
+   * @param board The game board at the end.
    */
   static void printResults(PrintWriter pen, Matrix<String> board) {
     int xs = 0;
@@ -110,18 +107,17 @@ public class Game1P {
   } // printResults
 
   /**
-   * Process the board, eliminating any matching cells. (The efficiency
-   * of this method could be improved.)
+   * Process the board, eliminating any matching cells. (The efficiency of this method could be
+   * improved.)
    *
-   * @param board
-   *   The board to process.
+   * @param board The board to process.
    */
   static void process(Matrix<String> board) {
-    int[][] offsets = new int[][] {{-1, -1}, {1, 1}, {1, 0}, {0, 1},
-        {0, -1}, {-1, 0}, {-1, 1}, {1, -1}};
-    String newStar = ".";       // The new place a star moves.
-    String oldStar = ":";       // The place the star was.
-    String repStar = "@";       // A star about to be overwritten.
+    int[][] offsets =
+        new int[][] {{-1, -1}, {1, 1}, {1, 0}, {0, 1}, {0, -1}, {-1, 0}, {-1, 1}, {1, -1}};
+    String newStar = "."; // The new place a star moves.
+    String oldStar = ":"; // The place the star was.
+    String repStar = "@"; // A star about to be overwritten.
 
     // Run through all the cells, looking for *'s.
     for (int row = 0; row < board.height(); row++) {
@@ -163,12 +159,9 @@ public class Game1P {
   /**
    * Set up a new board.
    *
-   * @param width
-   *   The width of the board.
-   * @param height
-   *   The height of the board.
-   * @param game
-   *   The game number.
+   * @param width The width of the board.
+   * @param height The height of the board.
+   * @param game The game number.
    *
    * @return the newly created board
    */
@@ -197,8 +190,7 @@ public class Game1P {
   /**
    * Run the game.
    *
-   * @param args
-   *   Command-line arguments.
+   * @param args Command-line arguments.
    */
   public static void main(String[] args) throws IOException {
     PrintWriter pen = new PrintWriter(System.out, true);
@@ -286,8 +278,7 @@ public class Game1P {
           if (rrRemaining <= 0) {
             commands = ArrayUtils.removeAll(commands, "RR");
           } // if
-          int rowToRemove =
-              IOUtils.readInt(pen, eyes, "Row: ", 0, board.height());
+          int rowToRemove = IOUtils.readInt(pen, eyes, "Row: ", 0, board.height());
           prev = board.clone();
           board.deleteRow(rowToRemove);
           process(board);
@@ -302,8 +293,7 @@ public class Game1P {
           if (rcRemaining <= 0) {
             commands = ArrayUtils.removeAll(commands, "RC");
           } // if
-          int colToRemove =
-              IOUtils.readInt(pen, eyes, "Column: ", 0, board.width());
+          int colToRemove = IOUtils.readInt(pen, eyes, "Column: ", 0, board.width());
           prev = board.clone();
           board.deleteCol(colToRemove);
           process(board);
@@ -318,8 +308,7 @@ public class Game1P {
           if (irRemaining <= 0) {
             commands = ArrayUtils.removeAll(commands, "IR");
           } // if
-          int rowToInsert =
-              IOUtils.readInt(pen, eyes, "Row: ", 0, board.height() + 1);
+          int rowToInsert = IOUtils.readInt(pen, eyes, "Row: ", 0, board.height() + 1);
           prev = board.clone();
           board.insertRow(rowToInsert);
           process(board);
@@ -334,8 +323,7 @@ public class Game1P {
           if (icRemaining <= 0) {
             commands = ArrayUtils.removeAll(commands, "IC");
           } // if
-          int colToInsert =
-              IOUtils.readInt(pen, eyes, "Column: ", 0, board.width() + 1);
+          int colToInsert = IOUtils.readInt(pen, eyes, "Column: ", 0, board.width() + 1);
           prev = board.clone();
           board.insertCol(colToInsert);
           process(board);
