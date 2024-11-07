@@ -48,15 +48,14 @@ public class GameBoard {
 
     public int getScore(String piece) {
         int score = 0;
-
         // points by rows
         for (int i = 0; i < this.height; i++) {
             int inLine = 0;
             for (int j = 0; j < this.width; j++) {
                 if (this.board.get(i, j).equals(piece)) {
                     inLine++;
-                    if (inLine >= 4) {
-                        inLine = 0;
+                    if (inLine == 4) {
+                        inLine--;
                         score++;
                     }
                 } else {
@@ -64,15 +63,14 @@ public class GameBoard {
                 }
             } // for
         } // for (points for rows)
-
         // points by column
         for (int j = 0; j < this.width; j++) {
             int inLine = 0;
             for (int i = 0; i < this.height; i++) {
                 if (this.board.get(i, j).equals(piece)) {
                     inLine++;
-                    if (inLine >= 4) {
-                        inLine = 0;
+                    if (inLine == 4) {
+                        inLine--;
                         score++;
                     }
                 } else {
@@ -80,11 +78,36 @@ public class GameBoard {
                 }
             } // for
         } // for (points for column)
-
-
-
-
-        
+        // points by diagonal top left corner
+        for (int x = 0; x < this.width; x++) {
+            int inLine = 0;
+            for (int i = x, j = 0; i < this.height && j < this.width; i++, j++) {
+                if (this.board.get(i, j).equals(piece)) {
+                    inLine++;
+                    if (inLine == 4) {
+                        inLine--;
+                        score++;
+                    }
+                } else {
+                    inLine = 0;
+                }
+            } // for (points for rows)
+        } // for (diagonal top left corner)
+        // points by diagonal top left corner
+        for (int x = 1; x < this.width; x++) {
+            int inLine = 0;
+            for (int i = 0, j = x; i < this.height && j < this.width; i++, j++) {
+                if (this.board.get(i, j).equals(piece)) {
+                    inLine++;
+                    if (inLine == 4) {
+                        inLine--;
+                        score++;
+                    }
+                } else {
+                    inLine = 0;
+                }
+            } // for (points for rows)
+        } // for (diagonal top left corner)
         return score;
     }
 

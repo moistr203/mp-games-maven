@@ -20,10 +20,18 @@ public class GameLogic {
         }
     }
 
-
-    static int getScore(GameBoard gameBoard) {
-      return 0;
-     //stub 
-  }
+    static void getWinner(GameBoard gameBoard) {
+        int x = gameBoard.getScore("X");
+        int o = gameBoard.getScore("O");
+        System.out.println("Player 1 score: " + x);
+        System.out.println("Player 2 score: " + o);
+        if (x > o) {
+            System.out.println("Player 1 wins!");
+        } else if (x < o) {
+            System.out.println("Player 2 wins!");
+        } else {
+            System.out.println("Tie!");
+        }
+    }
 
 }
