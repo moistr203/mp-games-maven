@@ -8,8 +8,8 @@ import java.io.PrintWriter;
 
 public class UserInterface {
     public static void main(String[] args) throws IOException {
-        int width = 4;
-        int height = 4;
+        int width = 8;
+        int height = 8;
         int row = -1;
         int column = -1;
         PrintWriter pen = new PrintWriter(System.out, true);
